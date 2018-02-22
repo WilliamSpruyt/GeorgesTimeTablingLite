@@ -1,0 +1,20 @@
+<div fxFlex>
+  <mat-toolbar color="primary">
+      
+    Georges's Timed Tables
+     
+    
+    </mat-toolbar>
+<mat-grid-list cols="5" rowHeight="25px"  >
+   <mat-grid-tile  class="midsum" *ngFor="let ques of theQuestions;let in=index" >{{ques.a}} &times; {{ques.b}} =
+      <input  align ="left" name="a{{in}}" type="text" style="width: 48px" [(ngModel)]="theQuestions[in].answerString">
+       
+    <div *ngIf="theQuestions[in].answerString==ques.answer">
+        <i class="material-icons" style="font-size:25px;color:green;">done</i>
+    </div>
+     
+     
+     
+  </mat-grid-tile>
+  </mat-grid-list>
+    </div>
