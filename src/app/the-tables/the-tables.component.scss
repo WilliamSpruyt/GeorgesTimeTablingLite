@@ -1,12 +1,17 @@
 .midsum > ::ng-deep figure {
-    justify-content: flex-start !important;
+    
     background-color:darkgray;
-    color: crimson;
+    color: brown;
 }
 
 .qbox {
-    
+    width: 25%;
     background-color: lightgray;
     color: darkblue;
+    text-align: center
     
 }
+ i{
+    justify-content: flex-end !important; 
+    
+ }

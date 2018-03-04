@@ -11,14 +11,25 @@ import { FormsModule } from '@angular/forms';
 import  'hammerjs';
 import { AppComponent } from './app.component';
 import { TheTablesComponent } from './the-tables/the-tables.component';
-import { TheClockComponent } from './the-clock/the-clock.component';
-
-
+import { TheClockComponent, MinuteSecondsPipe } from './the-clock/the-clock.component';
+import { SimpleTimer } from 'ng2-simple-timer';
+import { FailComponent } from './fail/fail.component';
+import { SucessComponent } from './sucess/sucess.component';
+import { FooterComponent } from './footer/footer.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { StartComponent } from './start/start.component';
+import {ScoreService} from './services/score.service'
+import {TheQuestionsService} from './services/the-questions.service'
 @NgModule({
   declarations: [
     AppComponent,
     TheTablesComponent,
-    TheClockComponent
+    TheClockComponent,
+    MinuteSecondsPipe,
+    FailComponent,
+    SucessComponent,
+    FooterComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +41,12 @@ import { TheClockComponent } from './the-clock/the-clock.component';
     MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
     MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,    FlexLayoutModule,
     
-    FlexLayoutModule,
+    AppRoutingModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [SimpleTimer,ScoreService,TheQuestionsService],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    StartComponent
+],
 })
 export class AppModule { }
