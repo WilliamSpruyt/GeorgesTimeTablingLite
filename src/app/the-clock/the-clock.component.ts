@@ -34,7 +34,7 @@ export class TheClockComponent implements OnInit {
   counter0 = 120;
 	timer0Id: string;
 	timer0button = 'START';
-	score:number;
+	score:number=0;
 	testLength=20;
 	
   constructor(private data: ScoreService,public dialog: MatDialog,private st: SimpleTimer, private router :Router,private qs :TheQuestionsService) { }
