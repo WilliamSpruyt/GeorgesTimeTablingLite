@@ -1,6 +1,7 @@
 #wrapper {
      
-    text-align: right;
+  display: table;
+  margin: 0 auto;
   }
   #clock {
      
@@ -9,7 +10,21 @@
 
   #die{
     font-size: xx-large;
-    color: deeppink;
+    color:darkred;
 
 
   }
+  .active {
+    background: #512DA8;;
+    color:greenyellow;
+}
+p{
+  color: rgb(10, 245, 10);
+  padding-left: 00%;
+   
+  
+}
+
+#but{
+  padding-left: 00%;
+}

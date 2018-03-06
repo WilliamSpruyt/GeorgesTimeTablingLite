@@ -6,7 +6,7 @@ import { MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldMo
   MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
   MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
   MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule } from '@angular/material';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule } from '@angular/forms';
 import  'hammerjs';
 import { AppComponent } from './app.component';
@@ -18,8 +18,9 @@ import { SucessComponent } from './sucess/sucess.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { StartComponent } from './start/start.component';
-import {ScoreService} from './services/score.service'
-import {TheQuestionsService} from './services/the-questions.service'
+import {ScoreService} from './services/score.service';
+import {TheQuestionsService} from './services/the-questions.service';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,7 @@ import {TheQuestionsService} from './services/the-questions.service'
     MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
     MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
     MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
-    MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,    FlexLayoutModule,
+    MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,FlexLayoutModule,
     
     AppRoutingModule,
   ],
