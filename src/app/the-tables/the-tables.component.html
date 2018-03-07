@@ -5,14 +5,14 @@
   </svg>
    
    
-<mat-grid-list cols="10" rowHeight="25px"  >
+<mat-grid-list [cols]="cols | async" gutterSize="4px" rowHeight="32px"  >
   <div id="wrap" *ngFor="let ques of theQuestions;let in=index">
    <mat-grid-tile  class="midsum"  >{{ques.aStr}} &times; {{ques.bStr}} =
      
     </mat-grid-tile>
       <mat-grid-tile class="midsum">  
-          <input class="qbox"  name="a{{in}}" type="text"  [(ngModel)]="theQuestions[in].answerString" 
-          (input)="updateScore();suceed()"> 
+          <input   class="qbox"  name="a{{in}}" type="text"  [(ngModel)]="theQuestions[in].answerString" 
+          (keyup)="updateScore();suceed()" > 
     <div style="text-align:right"  *ngIf="theQuestions[in].answerString==ques.answer">
         <i class="material-icons tick" style="justify-content: flex-end;font-size:25px;color:green;">done</i>
     </div>

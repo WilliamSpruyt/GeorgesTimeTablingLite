@@ -20,7 +20,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { StartComponent } from './start/start.component';
 import {ScoreService} from './services/score.service';
 import {TheQuestionsService} from './services/the-questions.service';
- 
+import { AutofocusModule } from 'angular-autofocus-fix';
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import {TheQuestionsService} from './services/the-questions.service';
     FailComponent,
     SucessComponent,
     FooterComponent,
-    StartComponent
+    StartComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import {TheQuestionsService} from './services/the-questions.service';
     MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
     MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
     MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,FlexLayoutModule,
-    
+    AutofocusModule,
     AppRoutingModule,
   ],
   providers: [SimpleTimer,ScoreService,TheQuestionsService],
