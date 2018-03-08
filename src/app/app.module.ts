@@ -21,7 +21,8 @@ import { StartComponent } from './start/start.component';
 import {ScoreService} from './services/score.service';
 import {TheQuestionsService} from './services/the-questions.service';
 import { AutofocusModule } from 'angular-autofocus-fix';
-  
+import { DifficultyService } from './services/difficulty.service';
+import { ReactiveFormsModule } from '@angular/forms';  
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,8 +46,9 @@ import { AutofocusModule } from 'angular-autofocus-fix';
     MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,FlexLayoutModule,
     AutofocusModule,
     AppRoutingModule,
+    ReactiveFormsModule
   ],
-  providers: [SimpleTimer,ScoreService,TheQuestionsService],
+  providers: [SimpleTimer,ScoreService,TheQuestionsService,DifficultyService],
   bootstrap: [AppComponent],
   entryComponents: [
     StartComponent

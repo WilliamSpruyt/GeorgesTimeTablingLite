@@ -7,6 +7,7 @@ import { TheQuestionsService} from '../services/the-questions.service';
 import {StartComponent} from '../start/start.component';
 import {MatDialog,MatDialogRef} from '@angular/material';
 import { ScoreService } from "../services/score.service";
+import { DifficultyService } from "../services/difficulty.service";
 @Pipe({
   name: 'minuteSeconds'
 })
@@ -31,16 +32,19 @@ export class TheClockComponent implements OnInit {
   mins: String="05";
 	secs: String="00";
 	death: String=""
-  counter0 = 120;
+	counter0 = 0;
+	timeLimit=120;
 	timer0Id: string;
 	timer0button = 'START';
 	score:number=0;
-	testLength=20;
+	testLength: number;
 	
-  constructor(private data: ScoreService,public dialog: MatDialog,private st: SimpleTimer, private router :Router,private qs :TheQuestionsService) { }
+  constructor(private level: DifficultyService,private data: ScoreService,public dialog: MatDialog,private st: SimpleTimer, private router :Router,private qs :TheQuestionsService) { }
 
   ngOnInit() {
 		this.data.currentScore.subscribe(message => this.score = message);
+		this.level.currentTime.subscribe(message => this.timeLimit = message);
+		this.level.currentNumQs.subscribe(message => this.testLength = message);
 		this.st.newTimer('1sec',1);
 		this.openLoginForm();
 		
@@ -51,7 +55,7 @@ delAllTimer() {
 	 
 }
 subscribeTimer0() {
-	this.counter0 = 120;
+	this.counter0 = 0;;
 	this.death="";
 	if (this.timer0Id) {
 		// Unsubscribe if timer Id is defined
@@ -73,8 +77,9 @@ subscribeTimer0() {
 	console.log(this.st.getSubscription(),);
 }
 timer0callback(): void {
-	this.timer0button=(this.score<20)?"FINISH":"START";
-	if(this.counter0<1){
+	console.log(this.score,this.testLength)
+	this.timer0button=(this.score<this.testLength)?"FINISH":"START";
+	if(this.counter0>=this.timeLimit){
 		this.death="TIMES UP! you only got "+this.score;
 		this.timer0button = 'START';
 		 
@@ -87,8 +92,8 @@ timer0callback(): void {
 			
 		 
 	}
-	else if(this.score<20){
-	this.counter0--;}
+	else if(this.score<this.testLength){
+	this.counter0++;}
 }
 openLoginForm(){
    

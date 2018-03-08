@@ -3,7 +3,7 @@ import{ Question } from '../question'
 import { TheQuestionsService} from '../services/the-questions.service'
 import {Router} from '@angular/router';
 import { ScoreService } from "../services/score.service";
-
+import { DifficultyService } from "../services/difficulty.service";
 import { ObservableMedia } from '@angular/flex-layout';
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
@@ -17,17 +17,19 @@ import "rxjs/add/operator/startWith";
 })
 export class TheTablesComponent implements OnInit {
   public focus: string;
-     
+  numqs: number;   
   theQuestions:Question[];
   score:number;
   public cols: Observable<number>;
-  constructor(private observableMedia: ObservableMedia,private qs :TheQuestionsService,private router :Router,private data: ScoreService) { }
+  constructor(private level: DifficultyService,private observableMedia: ObservableMedia,private qs :TheQuestionsService,private router :Router,private data: ScoreService) { }
 
   ngOnInit() {
-    this.theQuestions=this.qs.questionMaker(20,1,12);
-    this.data.currentScore.subscribe(message => this.score = message)
-    this.data.changeScore(0);
      
+    this.data.currentScore.subscribe(message => this.score = message)
+    this.level.currentNumQs.subscribe(message => this.numqs = message)
+    this.data.changeScore(0);
+    console.log("numqs "+this.numqs)
+    this.theQuestions=this.qs.questionMaker(this.numqs,1,12); 
     const grid = new Map([
       ["xs", 2],
       ["sm", 6],
