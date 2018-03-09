@@ -97,7 +97,8 @@ timer0callback(): void {
 }
 openLoginForm(){
    
-  this.dialog.open(StartComponent,{width:'600px',height:'500px'})
+  this.dialog.open(StartComponent,{width:'600px',height:'500px',disableClose: true})
 }
 conky(){console.log(this.score+'woop')}
 }
+ 

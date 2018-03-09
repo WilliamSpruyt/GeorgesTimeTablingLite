@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class DifficultyService {
-  private numQsSource = new BehaviorSubject<number>(0);
-  private timeLimit=new BehaviorSubject<number>(0);
+  private numQsSource = new BehaviorSubject<number>(10);
+  private timeLimit=new BehaviorSubject<number>(60);
   currentTime = this.timeLimit.asObservable();
   currentNumQs = this.numQsSource.asObservable();
   constructor() { }
