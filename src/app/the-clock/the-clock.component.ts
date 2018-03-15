@@ -62,22 +62,22 @@ subscribeTimer0() {
 		this.st.unsubscribe(this.timer0Id);
 		this.timer0Id = undefined;
 		this.timer0button = 'FINISHED';
-		console.log('timer 0 Unsubscribed.');
+		//console.log('timer 0 Unsubscribed.');
 		this.timer0Id = this.st.subscribe('1sec', () => this.timer0callback());
 		this.timer0button = 'FINISH';
 		
-		console.log('timer 0 Subscribed.',this.timer0button);
+		//console.log('timer 0 Subscribed.',this.timer0button);
 	} else {
 		// Subscribe if timer Id is undefined
 		this.timer0Id = this.st.subscribe('1sec', () => this.timer0callback());
 		this.timer0button = 'FINISH';
 		
-		console.log('timer 0 Subscribed.',this.timer0button);
+		//console.log('timer 0 Subscribed.',this.timer0button);
 	}
-	console.log(this.st.getSubscription(),);
+	//console.log(this.st.getSubscription(),);
 }
 timer0callback(): void {
-	console.log(this.score,this.testLength)
+	//console.log(this.score,this.testLength)
 	this.timer0button=(this.score<this.testLength)?"FINISH":"START";
 	if(this.counter0>=this.timeLimit){
 		this.death="TIMES UP! you only got "+this.score;
@@ -99,6 +99,6 @@ openLoginForm(){
    
   this.dialog.open(StartComponent,{width:'600px',height:'500px',disableClose: true})
 }
-conky(){console.log(this.score+'woop')}
+//conky(){console.log(this.score+'woop')}
 }
  

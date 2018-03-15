@@ -22,7 +22,8 @@ import {ScoreService} from './services/score.service';
 import {TheQuestionsService} from './services/the-questions.service';
 import { AutofocusModule } from 'angular-autofocus-fix';
 import { DifficultyService } from './services/difficulty.service';
-import { ReactiveFormsModule } from '@angular/forms';  
+import { ReactiveFormsModule } from '@angular/forms';
+import { FocusDirective } from './directives/focus.directive';  
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SucessComponent,
     FooterComponent,
     StartComponent,
+    FocusDirective,
     
   ],
   imports: [
