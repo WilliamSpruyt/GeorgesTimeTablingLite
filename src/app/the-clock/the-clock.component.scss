@@ -4,8 +4,10 @@
   margin: 0 auto;
   }
   #clock {
+    position: fixed;
+    top: 0;
+    right: 0;
      
-    display: inline-block;
   }
 
   #die{
@@ -28,3 +30,6 @@ p{
 #but{
   padding-left: 00%;
 }
+
+
+
