@@ -21,7 +21,7 @@ export class StartComponent implements OnInit {
     
     this.settings=this.loginForm.value;
     console.log('questions '+this.settings.questions,'time '+this.settings.time)
-    this.level.setDifficulty(this.settings.questions*1,this.settings.time*60);
+    this.level.setDifficulty(this.settings.questions*1,this.settings.time*60,this.settings.name);
     this.dialogRef.close();
     
   }
@@ -29,6 +29,7 @@ export class StartComponent implements OnInit {
     this.loginForm = this.fb.group({
       time: [2 ],
       questions: [20 ],
+      name: 'Name'
        
        
     });

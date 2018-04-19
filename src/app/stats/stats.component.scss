@@ -1,0 +1,40 @@
+ 
+.stat-header-cell {
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.54);
+  }
+  
+  .cdk-column-name {
+    font-size: 13px;
+    color: rgba(255, 0, 0, 0.87);
+  }
+  .cdk-column-date {
+    font-size: 13px;
+    color: rgba(127, 127, 0, 0.87);
+  }
+  .cdk-column-numQs {
+    font-size: 13px;
+    color: rgba(0, 255, 0, 0.87);
+  }
+  .cdk-column-time {
+    font-size: 13px;
+    color: rgba(0, 127,127, 0.87);
+  }
+  .cdk-column-avTime {
+    font-size: 13px;
+    color: rgba(0, 0, 255, 0.87);
+  }
+  mat-row:nth-child(even){
+    background-color: rgba(125, 125, 125, 0.40);
+    }
+
+mat-row:nth-child(odd){
+    background-color: rgba(125, 125, 125, 0.25);
+    }
+mat-header-row{
+    background-color: black;
+}
+   
+
+ 

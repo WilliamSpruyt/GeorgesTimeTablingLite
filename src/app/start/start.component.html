@@ -4,11 +4,11 @@
     <p >
         Welcome
       </p>
-<img   width="80%"  id="pic" src="https://www.dropbox.com/s/7vh6wrht05329dh/12042011%20032.jpg?raw=1">
+<img   width="60%"  id="pic" src="https://www.dropbox.com/s/7vh6wrht05329dh/12042011%20032.jpg?raw=1">
 <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-        Time<mat-slider  thumbLabel tickInterval="1" value="2" min="1" max="10" step="1" formControlName="time"></mat-slider>
-    <button type="submit" mat-button id="but" >Submit</button>
-    <mat-slider thumbLabel tickInterval="5" value="20" min="10" max="100" step="5" formControlName="questions"></mat-slider>Questions
+        Time<mat-slider  thumbLabel tickInterval="1" value="2" min="1" max="10" step="1" formControlName="time"></mat-slider>Questions  
+    <mat-slider thumbLabel tickInterval="5" value="20" min="10" max="100" step="5" formControlName="questions"></mat-slider><input  formControlName="name"
+    > <button type="submit" mat-button id="but" >Submit</button>
 </form>
 
 </div>

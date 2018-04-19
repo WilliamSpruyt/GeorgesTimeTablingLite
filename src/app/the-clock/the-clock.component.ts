@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Inject} from '@angular/core';
 import {SimpleTimer} from 'ng2-simple-timer';
 import { Pipe, PipeTransform } from '@angular/core';
 import {Router} from '@angular/router';
@@ -7,7 +7,16 @@ import { TheQuestionsService} from '../services/the-questions.service';
 import {StartComponent} from '../start/start.component';
 import {MatDialog,MatDialogRef} from '@angular/material';
 import { ScoreService } from "../services/score.service";
+import { TimerService } from "../services/timer.service";
 import { DifficultyService } from "../services/difficulty.service";
+import { OnChanges } from '@angular/core';
+import { StatsService} from '../services/stats.service';
+import { ObservableMedia } from '@angular/flex-layout';
+import { Observable } from "rxjs/Observable";
+import{Stat} from '../stat';
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/takeWhile";
+import "rxjs/add/operator/startWith";
 @Pipe({
   name: 'minuteSeconds'
 })
@@ -29,6 +38,7 @@ export class MinuteSecondsPipe implements PipeTransform {
 	providers: [],
 })
 export class TheClockComponent implements OnInit {
+	inPlay: boolean = false;
   mins: String="05";
 	secs: String="00";
 	death: String=""
@@ -38,13 +48,19 @@ export class TheClockComponent implements OnInit {
 	timer0button = 'START';
 	score:number=0;
 	testLength: number;
+	stat:Stat; 
+	player='';
 	
-  constructor(private level: DifficultyService,private data: ScoreService,public dialog: MatDialog,private st: SimpleTimer, private router :Router,private qs :TheQuestionsService) { }
+  constructor(private statservice : StatsService,
+     
+    @Inject('BaseURL') private BaseURL,private observableMedia: ObservableMedia,private level: DifficultyService,private data: ScoreService,public dialog: MatDialog,private st: SimpleTimer, private router :Router,private qs :TheQuestionsService,private time: TimerService) { }
 
   ngOnInit() {
 		this.data.currentScore.subscribe(message => this.score = message);
 		this.level.currentTime.subscribe(message => this.timeLimit = message);
 		this.level.currentNumQs.subscribe(message => this.testLength = message);
+		this.level.currentPlayer.subscribe(message => this.player = message)
+		this.time.changeTime(this.counter0);
 		this.st.newTimer('1sec',1);
 		this.openLoginForm();
 		
@@ -55,6 +71,7 @@ delAllTimer() {
 	 
 }
 subscribeTimer0() {
+	this.inPlay=true;
 	this.counter0 = 0;;
 	this.death="";
 	if (this.timer0Id) {
@@ -83,22 +100,35 @@ timer0callback(): void {
 		this.death="TIMES UP! you only got "+this.score;
 		this.timer0button = 'START';
 		 
-		if (this.score<this.testLength){
+		if (this.score<this.testLength && this.inPlay){
+			this.writeStats();
 			this.death="TIMES UP! you only got "+this.score;
+			this.inPlay=false;
 			this.router.navigate(['fail']);}
-			else{
-				this.death="You did it!";
-				this.router.navigate(['sucess']);}
+			 
 			
 		 
 	}
 	else if(this.score<this.testLength){
-	this.counter0++;}
+	this.counter0++;
+  this.time.changeTime(this.counter0)}
 }
 openLoginForm(){
    
-  this.dialog.open(StartComponent,{width:'600px',height:'500px',disableClose: true})
+  this.dialog.open(StartComponent,{width:'750px',height:'500px',disableClose: true})
 }
 //conky(){console.log(this.score+'woop')}
+
+writeStats(){
+	var d=new Date();
+	//constructor(id:number,time:number,numQs:number,date:string,name:string)
+	this.stat=new Stat(Math.floor(Date.now() / 1000),this.timeLimit,this.score,d.toDateString(),this.player);
+	 
+	console.log("this far "+this.stat.id);
+	this.statservice.submitFeedback(this.stat);
+  
+  
+  }
+
 }
  
