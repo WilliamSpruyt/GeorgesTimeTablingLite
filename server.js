@@ -11,7 +11,7 @@ statRoutes = require('./expressRouter/statRoutes');
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || config.DB).then(
+mongoose.connect(process.env.MONGODB_URI).then(
   (client) => {
     console.log('Database is connected');
     db = client.db()
