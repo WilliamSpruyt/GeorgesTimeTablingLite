@@ -10,7 +10,7 @@ import {MatDialog,MatDialogRef} from '@angular/material';
 })
 export class FooterComponent implements OnInit {
   player="";
-  constructor(private level: DifficultyService) { }
+  constructor(private level: DifficultyService,public dialog: MatDialog) { }
 
   ngOnInit() {
       this.level.currentPlayer.subscribe(message => this.player = message)
