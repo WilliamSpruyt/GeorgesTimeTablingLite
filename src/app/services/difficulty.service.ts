@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class DifficultyService {
   private numQsSource = new BehaviorSubject<number>(10);
   private timeLimit=new BehaviorSubject<number>(60);
-  private player= new BehaviorSubject<string>('Anon');
+  private player= new BehaviorSubject<string>('Nobody');
   currentTime = this.timeLimit.asObservable();
   currentNumQs = this.numQsSource.asObservable();
   currentPlayer= this.player.asObservable();
@@ -15,6 +15,3 @@ export class DifficultyService {
     this.player.next(name);
   }
 }
-
-  
- 

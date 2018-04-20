@@ -1,4 +1,4 @@
- 
+
 import {MatSort} from '@angular/material';
 import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit,ViewChild } from '@angular/core';
@@ -18,16 +18,16 @@ export class StatsComponent implements OnInit {
   dataSource = null;
   displayedColumns = ['name', 'date', 'numQs', 'time','avTime'];
   constructor(private statService: StatsService) { }
-  
+
   ngOnInit() {this.statService.getStats()
     .subscribe(message => {
-        this.statsArray= message 
+        this.statsArray= message
         this.dataSource = new MatTableDataSource(this.statsArray)
         this.dataSource.sort = this.sort;
-        console.log(this.statsArray[0])
+        console.log('the stats array in component init '+this.statsArray[0])
     })
   }
-   
+
 }
 export class StatsDataSource extends DataSource<any> {
   constructor(private statService: StatsService) {
@@ -38,4 +38,3 @@ export class StatsDataSource extends DataSource<any> {
   }
   disconnect() {}
 }
- 

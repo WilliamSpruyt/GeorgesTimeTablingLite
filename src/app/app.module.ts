@@ -1,4 +1,5 @@
 
+import { MatDialogModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import {CdkTableModule} from '@angular/cdk/table';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -10,6 +11,7 @@ import { MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldMo
   MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
   MatCardModule, MatIconModule,   MatDialogModule , MatPaginatorModule, MatProgressSpinnerModule,
   MatSortModule } from '@angular/material';
+  import {MatDialog,MatDialogRef} from '@angular/material/dialog';
   import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import  'hammerjs';
@@ -30,10 +32,10 @@ import { AutofocusModule } from 'angular-autofocus-fix';
 import { DifficultyService } from './services/difficulty.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FocusDirective } from './directives/focus.directive';
-import { StatsComponent } from './stats/stats.component';  
+import { StatsComponent } from './stats/stats.component';
 import {RestangularModule,Restangular} from 'ngx-restangular';
 import {RestangularConfigFactory} from './shared/restConfig';
-import {baseURL} from './shared/baseurl';
+import {baseURL} from './shared/baseURL';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,9 +48,10 @@ import {baseURL} from './shared/baseurl';
     StartComponent,
     FocusDirective,
     StatsComponent,
-    
+
   ],
   imports: [
+
     CdkTableModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -57,7 +60,7 @@ import {baseURL} from './shared/baseurl';
     MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
     MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
     MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
-    MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule, 
+    MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,
     AutofocusModule,
     AppRoutingModule,
     ReactiveFormsModule,  BrowserModule,
