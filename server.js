@@ -5,7 +5,7 @@ const express = require('express'),
   mongoose = require('mongoose'),
   config = require('./config/DB');
 statRoutes = require('./expressRouter/statRoutes');
-
+const app = express();
 
 mongoURI = 'mongodb://localhost/test';
 
@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGODB_URI || mongoURI).then(
   }
 );
 
-const app = express();
+
 app.use(bodyParser.json());
 // Create link to Angular build directory
 var distDir = __dirname + "/dist/";
