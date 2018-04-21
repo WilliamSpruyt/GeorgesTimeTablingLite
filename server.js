@@ -7,11 +7,13 @@ const express = require('express'),
 statRoutes = require('./expressRouter/statRoutes');
 
 
+mongoURI = 'mongodb://localhost/test';
+
 
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/data").then(
+mongoose.connect(process.env.MONGODB_URI || mongoURI).then(
   (client) => {
     console.log('Database is connected');
 
