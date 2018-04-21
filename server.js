@@ -11,10 +11,10 @@ statRoutes = require('./expressRouter/statRoutes');
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI).then(
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/data").then(
   (client) => {
     console.log('Database is connected');
-    db = client.db()
+
   },
   err => {
     console.log('Can not connect to the database' + err)
@@ -28,7 +28,7 @@ var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 app.use(cors());
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+  res.header("Access-Control-Allow-Origin", "http://localhost:4200");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();

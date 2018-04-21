@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DifficultyService } from "../services/difficulty.service";
-import {StartComponent} from '../start/start.component';
-import {MatDialog,MatDialogRef} from '@angular/material';
+import { Observable } from "rxjs/Observable";
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { TimerService } from "../services/timer.service";
 
 @Component({
   selector: 'app-footer',
@@ -9,15 +10,18 @@ import {MatDialog,MatDialogRef} from '@angular/material';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  player="";
-  constructor(private level: DifficultyService,public dialog: MatDialog) { }
+  player: string;
+  inPlay: boolean;
+  constructor(private game: TimerService,
+    private level: DifficultyService, public dialog: MatDialog) { }
 
   ngOnInit() {
-      this.level.currentPlayer.subscribe(message => this.player = message)
-  }
-  openLoginForm(){
+    this.level.currentPlayer.subscribe(message => this.player = message);
+    this.game.inPlay.subscribe(message => this.inPlay = message);
 
-    this.dialog.open(StartComponent,{width:'750px',height:'500px',disableClose: true})
   }
+
+
+
 
 }

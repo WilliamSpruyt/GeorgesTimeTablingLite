@@ -1,19 +1,22 @@
-<svg   width="100" height="100" id="clock">
+<div [hidden]="!inPlay"><svg width="100" height="100" id="clock">
     <circle cx="50" cy="50" [attr.r]=48 stroke="green" stroke-width="4"  />
     <circle cx="50" cy="50" [attr.r]="(counter0/timeLimit)*48"  stroke-width="0" fill="red" />
-    
-    <text fill="#ffff00" font-size="30" font-family="Verdana" x="50" y="50" text-anchor="middle" alignment-baseline="middle">{{timeLimit-counter0|minuteSeconds}}</text>
-  </svg>
-<mat-toolbar id color="primary"><span  id="die" >{{death}}</span>
-  <span id="but" *ngIf="timer0button==='START'"><a  mat-button (click)="subscribeTimer0()" routerLink="/test" routerLinkActive="active"  >{{timer0button}}</a></span>
-  <span id="statbut" *ngIf="timer0button==='START'"> <a  mat-button  routerLink="/stats" routerLinkActive="active"  >STATS</a></span>
-  <div  id="wrapper" fxLayout="row" fxLayoutAlign="space-around center">  
- 
 
- <p >George's Timed Tables</p><span class="flex-spacer"></span>
- 
- 
-</div>
+    <text fill="#ffff00" font-size="30"
+    font-family="Verdana" x="50" y="50" text-anchor="middle"
+    alignment-baseline="middle">{{timeLimit-counter0|minuteSeconds}}</text>
+  </svg></div>
+<mat-toolbar id color="primary"><span id="die">{{death}}</span>
+  <span id="but" [hidden]="inPlay">
+    <a  mat-button (click)="subscribeTimer0()" routerLink="/test" routerLinkActive="active"  >
+      {{timer0button}}</a></span>
+  <span id="statbut" [hidden]="inPlay">
+    <a  mat-button  routerLink="/stats" routerLinkActive="active"  >STATS</a></span>
+  <div id="wrapper" fxLayout="row" fxLayoutAlign="space-around center">
+
+
+    <p>George's Timed Tables</p><span class="flex-spacer"></span>
+
+
+  </div>
 </mat-toolbar>
-
- 
