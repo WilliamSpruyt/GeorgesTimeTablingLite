@@ -35,7 +35,7 @@ app.get('/*', function(req, res) {
 
 app.get('/products/:id', function(req, res, next) {
   res.json({
-    msg: 'This is CORS-enabled for all origins!' + process.env.MONGODB_URI
+    msg: 'This is CORS-enabled for all origins!'
   });
 });
 
