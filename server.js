@@ -7,8 +7,8 @@ const express = require('express'),
 statRoutes = require('./expressRouter/statRoutes');
 const app = express();
 
-mongoURI = 'mongodb://localhost/test';
-
+mongoURI = "mongodb://localhost:27017/test";
+app.use(bodyParser.json());
 
 
 
@@ -24,12 +24,14 @@ mongoose.connect(process.env.MONGODB_URI || mongoURI).then(
 );
 
 
-app.use(bodyParser.json());
+
 // Create link to Angular build directory
 var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 app.use(cors());
-
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
 
 app.get('/products/:id', function(req, res, next) {
   res.json({
