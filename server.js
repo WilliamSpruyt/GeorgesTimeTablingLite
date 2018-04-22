@@ -24,14 +24,13 @@ mongoose.connect(process.env.MONGODB_URI || mongoURI).then(
 );
 
 
-
-// Create link to Angular build directory
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
 app.use(cors());
+// Create link to Angular build directory
+/*var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/index.html'));
-});
+});*/
 
 app.get('/products/:id', function(req, res, next) {
   res.json({
