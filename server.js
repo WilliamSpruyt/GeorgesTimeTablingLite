@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || mongoURI).then(
+mongoose.connect(process.env.MONGOLAB_URI || mongoURI).then(
   (client) => {
     console.log('Database is connected');
 
