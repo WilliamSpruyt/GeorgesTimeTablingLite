@@ -7,7 +7,7 @@ const express = require('express'),
 statRoutes = require('./expressRouter/statRoutes');
 const app = express();
 
-mongoURI = "mongodb://localhost:27017/test";
+mongoURI = "mongodb://localhost:27017/";
 app.use(bodyParser.json());
 
 
@@ -38,7 +38,7 @@ app.get('/products/:id', function(req, res, next) {
     msg: 'This is CORS-enabled for all origins!'
   });
 });
-
+let db = mongoose.connection;
 
 /*app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:8080");
