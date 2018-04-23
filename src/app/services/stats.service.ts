@@ -18,7 +18,7 @@ export class StatsService {
 
   getStats(): Observable<void | Stat[]> {
     console.log('getStats is getting!');
-    return this.restangular.all('stats').getList().then(console.log('getStats is got!'););
+    return this.restangular.all('stats').getList();
   }
   submitFeedback(stats): Observable<Stat> {
     console.log('in the service ' + stats.id)
