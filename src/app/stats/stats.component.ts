@@ -19,14 +19,14 @@ export class StatsComponent implements OnInit {
   displayedColumns = ['name', 'date', 'numQs', 'time', 'avTime'];
   constructor(private statService: StatsService) { }
 
-  ngOnInit() {    
-this.statService.getStats()
-    .subscribe(message => {
-      this.statsArray = message
-      this.dataSource = new MatTableDataSource(this.statsArray)
-      this.dataSource.sort = this.sort;
-      console.log('FUCK!!!! the stats array in component init ' + this.statsArray[0])
-    })
+  ngOnInit() {
+    this.statService.getStats()
+      .subscribe(message => {
+        this.statsArray = message
+        this.dataSource = new MatTableDataSource(this.statsArray)
+        this.dataSource.sort = this.sort;
+        console.log('!!!! the stats array in component init ' + this.statsArray[0])
+      })
   }
 
 }
