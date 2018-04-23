@@ -3,7 +3,7 @@ import { Stat } from '../stat';
 import { Http, Response } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-//import { baseURL} from '../shared/baseURL';
+import { baseURL } from '../shared/baseURL';
 
 import { RestangularModule, Restangular } from 'ngx-restangular';
 

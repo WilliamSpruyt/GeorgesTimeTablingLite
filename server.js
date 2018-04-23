@@ -26,27 +26,28 @@ mongoose.connect(process.env.MONGODB_URI || mongoURI).then(
 
 app.use(cors());
 // Create link to Angular build directory
-
+app.get('/products/:id', function(req, res, next) {
+  res.json({
+    msg: 'This is CORS-enabled for all origins!'
+  });
+});
 var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
-app.get('/products/:id', function(req, res, next) {
-  res.json({
-    msg: 'This is CORS-enabled for all origins!'
-  });
-});
+
 let db = mongoose.connection;
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+  res.header("Access-Control-Allow-Origin", "http://localhost:4200");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
 });
 const port = process.env.PORT || 8080;
+
 app.use('/stats', statRoutes);
 const server = app.listen(port, function() {
   console.log('Listening on port ' + port);
