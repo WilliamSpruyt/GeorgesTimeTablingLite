@@ -20,6 +20,7 @@ export class StatsService {
     console.log('getStats is getting!');
     return this.restangular.all('stats').getList();
   }
+
   submitFeedback(stats): Observable<Stat> {
     console.log('in the service ' + stats.id)
     return this.restangular.all('stats/add').post(stats);
@@ -27,12 +28,4 @@ export class StatsService {
 
 
 }
-constructor(private http: Http) { }
 
-// get("/api/contacts")
-getContacts(): Promise < void | Contact[] > {
-  return this.http.get(this.contactsUrl)
-    .toPromise()
-    .then(response => response.json() as Contact[])
-    .catch(this.handleError);
-}
