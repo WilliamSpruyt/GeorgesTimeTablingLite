@@ -16,9 +16,9 @@ export class StatsService {
 
   constructor(private restangular: Restangular) { }
 
-  getStats(): Observable<Stat[]> {
+  getStats(): Observable<void | Stat[]> {
     console.log('getStats is getting!');
-    return this.restangular.all('stats').getList();
+    return this.restangular.all('stats').getList().then(console.log('getStats is got!'););
   }
   submitFeedback(stats): Observable<Stat> {
     console.log('in the service ' + stats.id)
@@ -27,17 +27,12 @@ export class StatsService {
 
 
 }
+constructor(private http: Http) { }
 
-    /* submitFeedback(stats) {
-       const uri = 'http://localhost:4000/stats/add';
-       const obj = {
-         id: stats.id,
-         time: stats.time,
-         numQs: stats.numQs,
-         date: stats.date,
-         avTime: stats.avTime,
-         name: stats.name,
-       };
-       this.http.post(uri, obj)
-           .subscribe(res => console.log('Done'));
-     }*/
+// get("/api/contacts")
+getContacts(): Promise < void | Contact[] > {
+  return this.http.get(this.contactsUrl)
+    .toPromise()
+    .then(response => response.json() as Contact[])
+    .catch(this.handleError);
+}
