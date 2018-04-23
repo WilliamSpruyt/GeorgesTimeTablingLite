@@ -20,7 +20,7 @@ export class StatsComponent implements OnInit {
   constructor(private statService: StatsService) { }
 
   ngOnInit() {
-    console.log('this happened at least!')
+
     this.statService.getStats()
       .subscribe(message => {
         this.statsArray = message

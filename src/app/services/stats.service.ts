@@ -16,7 +16,7 @@ export class StatsService {
 
   constructor(private restangular: Restangular) { }
 
-  getStats(): Observable<void | Stat[]> {
+  getStats(): Observable<Stat[]> {
     console.log('getStats is getting!');
     return this.restangular.all('stats').getList();
   }
@@ -28,4 +28,3 @@ export class StatsService {
 
 
 }
-
