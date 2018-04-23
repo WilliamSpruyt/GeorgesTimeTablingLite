@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { baseURL } from '../shared/baseURL';
 
+import 'rxjs/add/operator/toPromise';
 import { RestangularModule, Restangular } from 'ngx-restangular';
 
 import 'rxjs/add/operator/delay';
@@ -13,12 +14,20 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 @Injectable()
 export class StatsService {
+  private contactsUrl = '/stats';
+  constructor(private restangular: Restangular, private http: Http) { }
 
-  constructor(private restangular: Restangular) { }
-
-  getStats(): Observable<Stat[]> {
+  /*getStats(): Observable<Stat[]> {
     console.log('getStats is getting!');
     return this.restangular.all('stats').getList();
+  }*/
+
+  // get("/api/contacts")
+  getStats(): Promise<void | Stat[]> {
+    return this.http.get(this.contactsUrl)
+      .toPromise()
+      .then(response => response.json() as Contact[])
+      .catch(this.handleError);
   }
 
   submitFeedback(stats): Observable<Stat> {
