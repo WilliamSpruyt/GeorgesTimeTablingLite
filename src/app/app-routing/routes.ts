@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: 'fail', component: FailComponent },
   { path: 'sucess', component: SucessComponent },
   { path: 'start', component: LoginComponent },
-  { path: 'stats', component: StatsComponent },
+  { path: 'HALLOFFAME', component: StatsComponent },
 
   { path: '', redirectTo: '/start', pathMatch: 'full' }
 ];
