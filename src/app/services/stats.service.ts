@@ -23,7 +23,7 @@ export class StatsService {
   }*/
 
   // get("/api/contacts")
-  getStats(): Promise<void | Stat[]> {
+  getStats(): Observable<void | Stat[]> {
     return this.http.get(this.contactsUrl)
       .toPromise()
       .then(response => response.json() as Contact[])
