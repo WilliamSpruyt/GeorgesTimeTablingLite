@@ -20,7 +20,7 @@ statRoutes.route('/add').post(function(req, res) {
 });
 
 // Defined get data(index or listing) route
-statRoutes.route('/stats').get(function(req, res) {
+statRoutes.route('/').get(function(req, res) {
   Stat.find(function(err, stats) {
     if (err) {
       console.log(err + "the stat routes!!!");
