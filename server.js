@@ -11,7 +11,7 @@ mongoURI = "mongodb://localhost:27017/";
 app.use(bodyParser.json());
 
 
-console.log(process.env.MONGODB_URI)
+ 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || mongoURI).then(
   (client) => {
@@ -31,21 +31,19 @@ app.get('/products/:id', function(req, res, next) {
     msg: 'This is CORS-enabled for all origins!'
   });
 });
+
+
 var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 app.get('/*', function(req, res) {
+  console.log('the dist bit ');
   res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
 
 let db = mongoose.connection;
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:4200");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  next();
-});
+
 const port = process.env.PORT || 8080;
 
 app.use('/stats', statRoutes);

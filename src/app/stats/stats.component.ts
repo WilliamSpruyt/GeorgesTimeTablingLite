@@ -28,6 +28,7 @@ export class StatsComponent implements OnInit {
         this.dataSource.sort = this.sort;
         console.log('!!!! the stats array in component init ' + this.statsArray[0])
       })
+      console.log('after fail!!!! the stats array in component init ' + this.statsArray[0])
   }
 
 }
