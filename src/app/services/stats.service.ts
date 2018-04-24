@@ -17,10 +17,10 @@ export class StatsService {
 
   constructor(private restangular: Restangular, private http: Http) { }
 
-  /*getStats(): Observable<Stat[]> {
+  getStats(): Observable<Stat[]> {
     console.log('getStats is getting!');
     return this.restangular.all('stats').getList();
-  }*/
+  }
 
   submitFeedback(stats): Observable<Stat> {
     console.log('in the service ' + stats.id)
@@ -28,11 +28,8 @@ export class StatsService {
   }
  // get("/api/contacts")
  
- getStats():Promise<Stat[]> {
-  return this.http.get('stats')
-             .toPromise()
-             .then(response => response.json() as Stat[])
- }
+ 
+              
 
 
 
