@@ -14,30 +14,18 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 @Injectable()
 export class StatsService {
-  private contactsUrl = '/stats';
+
   constructor(private restangular: Restangular, private http: Http) { }
 
-  /*getStats(): Observable<Stat[]> {
-    console.log('getStats is getting!');
-    return this.restangular.all('stats').getList();
-  }*/
-
-  // get("/api/contacts")
   getStats(): Observable<Stat[]> {
-    return this.http.get(this.contactsUrl)
-      .toPromise()
-      .then(response => response.json() as Contact[])
-      .catch(this.handleError);
+    console.log('getStats is getting!');
+    return this.restangular.all('/').getList();
   }
 
   submitFeedback(stats): Observable<Stat> {
     console.log('in the service ' + stats.id)
     return this.restangular.all('stats/add').post(stats);
   }
-  private handleError(error: any) {
-    let errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg); // log to console instead
-  }
+
 
 }
