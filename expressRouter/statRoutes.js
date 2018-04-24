@@ -19,10 +19,7 @@ statRoutes.route('/add').post(function(req, res) {
     });
 });
 
-// Defined get data(index or listing) route
-statRoutes.get('/stats',function(req, res) {
-   console.log('heloooooooooooo!')
-});
+ 
  
 
 
