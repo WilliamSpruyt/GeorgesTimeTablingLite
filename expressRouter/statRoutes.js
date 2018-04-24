@@ -9,7 +9,7 @@ var Stat = require('../models/Stat');
 statRoutes.route('/add').post(function(req, res) {
   var stat = new Stat(req.body);
   stat.save()
-    .then(item => {
+    .then(item => {console.log('Stat added successfully');
       res.status(200).json({
         'stat': 'Stat added successfully'
       });
