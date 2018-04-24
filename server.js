@@ -48,7 +48,8 @@ app.use(function(req, res, next) {
 });
 const port = process.env.PORT || 8080;
 
-app.use('/stats', statRoutes);
+ 
+
 const server = app.listen(port, function() {
   console.log('Listening on port ' + port);
 });
