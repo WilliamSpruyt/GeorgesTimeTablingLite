@@ -26,7 +26,7 @@ statRoutes.route('/stats').get(function(req, res) {
       console.log(err + "the stat routes!!!");
     } else {
       console.log(stats + "the stat routes!!!");
-      res.json(stats);
+     // res.json(stats);
     }
   });
 });
