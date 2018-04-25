@@ -26,8 +26,9 @@ statRoutes.route('/').get(function(req, res) {
   
     // object of all the users
     console.log(users);
-  
-  /*Stat.find(function(err, stats) {
+
+  /*
+  Stat.find(function(err, stats) {
     if (err) {
       console.log(err + "the stat routes!!!");
     } else {
