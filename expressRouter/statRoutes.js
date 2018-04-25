@@ -20,10 +20,10 @@ statRoutes.route('/add').post(function(req, res) {
 });
 
 // Defined get data(index or listing) route
-statRoutes.route('/').get(function(req, res) {
+statRoutes.route('/stats').get(function(req, res) {
 
   // get all the users
-User.find({}, function(err, users) {
+Stat.find({}, function(err, users) {
   if (err) throw err;
 
   // object of all the users
