@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGODB_URI || mongoURI).then(
   }
 );
 
-
+app.use('/stats', statRoutes);
 app.use(cors());
 // Create link to Angular build directory
 app.get('/products/:id', function(req, res, next) {
@@ -46,7 +46,7 @@ let db = mongoose.connection;
 
 const port = process.env.PORT || 8080;
 
-app.use('/stats', statRoutes);
+ 
  
  
 const server = app.listen(port, function() {
