@@ -33,12 +33,12 @@ app.get('/products/:id', function(req, res, next) {
 });
 
 
-/*var distDir = __dirname + "/dist/";
+var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 app.get('/*', function(req, res) {
   console.log('the dist bit ');
   res.sendFile(path.join(__dirname + '/dist/index.html'));
-});*/
+});
 
 
 let db = mongoose.connection;
