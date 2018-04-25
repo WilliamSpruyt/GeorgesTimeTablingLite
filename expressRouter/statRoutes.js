@@ -22,7 +22,7 @@ statRoutes.route('/add').post(function(req, res) {
 // Defined get data(index or listing) route
 statRoutes.route('/').get(function(req, res) {
 
-
+  
   Stat.find(function(err, Stat) {
     if (err) {
       console.log(err + "the stat routes!!!");
@@ -32,12 +32,7 @@ statRoutes.route('/').get(function(req, res) {
     }
   });
 });
-Person.findOne({ 'name.last': 'Ghost' }, 'name occupation', function (err, person) {
-  if (err) return handleError(err);
-  // Prints "Space Ghost is a talk show host".
-  console.log('%s %s is a %s.', person.name.first, person.name.last,
-    person.occupation);
-});
+
 
 
 module.exports = statRoutes;
