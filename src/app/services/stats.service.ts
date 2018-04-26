@@ -18,12 +18,12 @@ export class StatsService {
   constructor(private restangular: Restangular, private http: Http) { }
 
   getStats(): Observable<Stat[]> {
-    console.log('getStats is getting!');
+     
     return this.restangular.all('stats').getList();
   }
 
   submitFeedback(stats): Observable<Stat> {
-    console.log('in the service ' + stats.id)
+     
     return this.restangular.all('stats/add').post(stats);
   }
  // get("/api/contacts")
