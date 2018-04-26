@@ -19,7 +19,7 @@ export class StatsService {
 
   getStats(): Observable<Stat[]> {
     console.log('getStats is getting!');
-    return this.restangular.all('/').getList();
+    return this.restangular.all('/stats').getList();
   }
 
   submitFeedback(stats): Observable<Stat> {

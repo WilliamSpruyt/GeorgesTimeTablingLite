@@ -20,15 +20,18 @@ statRoutes.route('/add').post(function(req, res) {
 });
 
 // Defined get data(index or listing) route
-statRoutes.route('/stats').get(function(req, res) {
+statRoutes.route('/').get(function(req, res) {
 
-  // get all the users
-Stat.find({}, function(err, users) {
-  if (err) throw err;
-
-  // object of all the users
-  console.log(users);
-});
+  
+  Stat.find(function(err, stats) {
+    if (err) {
+      es.status(400).send("fucking hell!!!!");
+      console.log(err + "the stat routes!!!");
+    } else {
+      console.log(stats + "the stat routes!!!");
+      res.json(stats);
+    }
+  });
 });
 
 
