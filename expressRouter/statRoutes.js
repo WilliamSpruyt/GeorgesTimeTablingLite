@@ -25,7 +25,7 @@ statRoutes.route('/').get(function(req, res) {
   
   Stat.find(function(err, stats) {
     if (err) {
-      es.status(400).send("fucking hell!!!!");
+      res.status(400).send("fucking hell!!!!");
       console.log(err + "the stat routes!!!");
     } else {
       console.log(stats + "the stat routes!!!");
